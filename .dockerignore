@@ -1,0 +1,8 @@
+.vscode
+.vs
+node_modules
+*_env
+.git
+.gitignore
+.DS_Store 
+mongo-data/
