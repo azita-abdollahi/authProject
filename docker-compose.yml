@@ -30,8 +30,6 @@ services:
       - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
     env_file:
       - ./mongo-express_env
-    # ports: 
-    #   - 8081:8081
   
   redis:
     image: redis:7.0
@@ -54,8 +52,7 @@ services:
       - redis
     networks: 
       - api-net
-    # ports: 
-    #   - 3000:3000
+      
   nginx: 
     image: nginx:1.21
     container_name: nginx_proxy
