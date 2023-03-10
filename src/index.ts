@@ -17,7 +17,7 @@ app.use(cors({ origin: conf.get("origin"), optionsSuccessStatus: 200 }));
 app.use("/", router)
 
 const port = conf.get<number>('PORT');
-redisClient.set("test", "3");
+
 app.listen(port, () => {
     console.log(`${conf.get("name")}\n Listening On Port ${port} `);
     connectDB()

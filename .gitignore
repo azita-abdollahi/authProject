@@ -4,3 +4,4 @@ node_modules
 .vscode
 .vs
 .DS_Store
+cache
