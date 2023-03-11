@@ -5,7 +5,6 @@ import {config} from "dotenv";
 config()
 import router from "./routes/router";
 import connectDB from './utils/connectDB';
-import redisClient from "./utils/connectRedis";
 
 const app = express();
 
