@@ -9,6 +9,7 @@
   },
   "keywords": [],
   "author": "Azita_Abdollahi",
+  "repository": "https://github.com/azita-abdollahi/authProject.git",
   "license": "ISC",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
