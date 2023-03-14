@@ -15,6 +15,7 @@ export const validate =
       next();
     } catch (err: any) {
       if (err instanceof ZodError) {
+        res.statusCode = 400;
         throw new SchemaValidationException("Schema Validation Error!");
       }
       console.error(err);
