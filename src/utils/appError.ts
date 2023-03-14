@@ -47,6 +47,13 @@ class ApiError extends Error {
 	  this.name = "MongoException";
 	}
   }
+
+  export class AuthorizeException extends ApiError {
+	constructor(message?: string) {
+	  super(message ?? "Unauthorized.");
+	  this.name = "AuthorizeException";
+	}
+  }
   
 
   
