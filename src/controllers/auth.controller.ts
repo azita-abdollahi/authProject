@@ -29,6 +29,7 @@ export const registerHandler = async (
       email: req.body.email,
       name: req.body.name,
       password: req.body.password,
+      role: req.body.role,
     });
 
     res.status(201).json({
@@ -71,7 +72,9 @@ export const loginHandler = async (
 
       res.status(200).json({
         status: 'success',
-        accessToken,
+        data: {
+          accessToken
+        },
       });
     } catch (err: any) {
       next(err);

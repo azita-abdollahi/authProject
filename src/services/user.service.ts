@@ -30,12 +30,13 @@ export const findUser = async (
     return user;
 }
   
-export const updateUser = async (userId: string, userData: Partial<IUser>): Promise<IUser | null> => {
+export const updateUser = async (userId: string, userData: Partial<IUser>) => {
     const userToUpdate = await User.findById(userId);
     if (!userToUpdate) return null;
 
     userToUpdate.name = userData.name || userToUpdate.name;
     userToUpdate.email = userData.email || userToUpdate.email;
+    userToUpdate.role = userData.role || userToUpdate.role;
     userToUpdate.updatedAt = new Date();
 
     return userToUpdate.save();
