@@ -32,7 +32,7 @@ export const registerHandler = async (
       role: req.body.role,
     });
 
-    res.status(201).json({
+    res.status(200).json({
       status: 'success',
       data: {
         user,
