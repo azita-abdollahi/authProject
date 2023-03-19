@@ -2,24 +2,20 @@ import jwt, { SignOptions } from 'jsonwebtoken';
 import conf from 'config';
 import { config } from "dotenv";
 config();
+import fs from 'fs'
 
 export const signJwt = (payload: Object, options: SignOptions = {}) => {
-  const privateKey = Buffer.from(
-    process.env.ACCESS_TOKEN_PRIVATE_KEY||conf.get<string>('accessTokenPrivateKey'),
-    'base64'
-  ).toString('ascii');
-  return jwt.sign(payload, privateKey, {
+  const privateKey = fs.readFileSync('./private.key', 'utf-8');
+  const token = jwt.sign(payload, privateKey, {
     ...(options && options),
     algorithm: 'RS256'
   });
+  return `Bearer ${token}`
 };
 
 export const verifyJwt = <T>(token: string): T | null => {
   try {
-    const publicKey = Buffer.from(
-      process.env.ACCESS_TOKEN_PUBLIC_KEY||conf.get<string>('accessTokenPublicKey'),
-      'base64'
-    ).toString('ascii');
+    const publicKey = fs.readFileSync('./public.key', 'utf-8');
     return jwt.verify(token, publicKey) as T;
   } catch (error) {
     return null;

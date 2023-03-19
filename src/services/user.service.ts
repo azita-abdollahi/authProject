@@ -26,7 +26,7 @@ export const findUser = async (
     query:FilterQuery<IUser>,
     options: QueryOptions = {}
     ) => {
-    const user = await User.findOne(query, {}, options).select('-password');
+    const user = await User.findOne(query, {}, options).select('+password');
     return user;
 }
   
@@ -54,8 +54,8 @@ export const signToken =async (user:IUser) => {
             expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`,
         }
     );
-    redisClient.set(user._id, JSON.stringify(user), {
-        EX: 60 * 60,
-      });
+    redisClient.set((user._id).toString(), JSON.stringify(user), {
+        EX: 3600
+    });
     return { accessToken }
 }
