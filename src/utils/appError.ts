@@ -41,7 +41,7 @@ class ApiError extends Error {
 	}
   }
   
-  export default class MongoException extends ApiError {
+  export class MongoException extends ApiError {
 	constructor(message?: string) {
 	  super(message ?? "An error occurred while performing a MongoDB operation.");
 	  this.name = "MongoException";
